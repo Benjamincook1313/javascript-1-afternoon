@@ -16,21 +16,26 @@ function greeting(name) {
 //Name it newGreeting.
 
 //Code Here
-newGreeting = function(){};
+let newGreeting = function (name){
+  return `Hello, ${name}`
+}
 //////////////////PROBLEM 3////////////////////
 
 //Rewrite the function greeting as an arrow function.
 //Name it finalGreeting.
 
 //Code Here
-//finalGreeting (){};
+let finalGreeting = (name) => {
+  return `Hello, ${name}`
+};
 //////////////////PROBLEM 4////////////////////
 
 //Create an array called groceries with the values
-"apples", "milk", "eggs", "bread"
+// "apples", "milk", "eggs", "bread"
 
 //Code Here
-var groceries = ["apples", " milk", " eggs", " bread"];
+var groceries = ["apples", "milk", "eggs", "bread"];
+
 //Write a function called doubleCheck that takes in an array
 //as a parameter.
 
@@ -38,9 +43,10 @@ var groceries = ["apples", " milk", " eggs", " bread"];
 //doubleCheck should return the array.
 
 //Code Here
-      function doubleCheck(groceries){
-        if groceries.indexOf("chocolate") === -1)
+      let doubleCheck = (groceries) => {
+        if(groceries.indexOf("chocolate") === -1)
         groceries.push("chocolate");
+        return groceries
      }
 //////////////////PROBLEM 5////////////////////
 
@@ -50,29 +56,31 @@ var groceries = ["apples", " milk", " eggs", " bread"];
 //and goodBoy (a boolean).
 
 //Code Here
-// var dog={
-//     name: "Spot",
-//     color: "Brown",
-//   age: "2",
-//   goodBoy = true;
-//   }
+
+let dog = {}
+  dog.name = "Spot",
+  dog.color = "brown",
+  dog.age = 2,
+  dog.goodBoy = true
+  
+
 //...access the dog's name from the object and assign it to a
 //variable called devMountainClassPet.
 
 //Code Here
-// var devMountainClassPet = dog.name;
+var devMountainClassPet = dog.name;
+
 //Add a method to dog called bark.
 //The value of bark should be a function that returns the string "Woof woof".
 
 //Code Here
-// var dog ={
-//   bark:function(){
-//  
-// }
+dog.bark = function(){
+    return "Woof woof"
+}
 //Store the result of invoking the bark method in a variable called ruff.
 //var ruff = dog.bark;
 //Code Here
-
+let ruff = dog.bark()
 //////////////////PROBLEM 6////////////////////
 
 //Write a function called looper that takes in an array. looper should declare
@@ -86,46 +94,53 @@ var groceries = ["apples", " milk", " eggs", " bread"];
 
 //Code Here
 function looper(arr){
-var mySum = 0;
-
+  var mySum = 0;
+  for(let i=0; i < arr.length; i++){
+    if(arr[i] % 2 !== 0 || arr[i] >= 100){   
+      mySum += arr[i]   
+    }
+  }
+  return mySum
 }
 //////////////////PROBLEM 7////////////////////
 
 //Given the following function called math
 
-// function math(num1, num2, callback) {
-//   return callback(num1, num2);
-// }
+function math(num1, num2, callback) {
+  return callback(num1, num2);
+}
 
 //Write a function called add that takes in two parameters and
 //returns the result of adding them together.
 
 //Code Here
-// function add(num1, num2){
-//   return num1 + num2;
-// }
+function add(num1, num2){
+  return num1 + num2;
+}
 //Now invoke math, passing in the numbers 3 and 4, and your add function,
 //storing the result in the variable mathSum.
 
 //Code Here
-//math(3,4)
+
+let mathSum = math(3,4,add)
 //////////////////PROBLEM 8////////////////////
 
 //Write a function called invoker that takes in one paramter, a callback function.
 //invoker should return the result of invoking the callback.
 
-// function sampleCallbackOne() {
-//   return "I am a callback function";
-// }
+function sampleCallbackOne() {
+  return "I am a callback function";
+}
 
-// function sampleCallbackTwo() {
-//   return "I am also a callback function";
-// }
+function sampleCallbackTwo() {
+  return "I am also a callback function";
+}
 
 //Code Here
-// var invoker(1param, callback){
-//   return callback;
-// }
+let invoker = (callback)=>{
+  return callback();
+}
+
 //////////////////PROBLEM 9////////////////////
 
 let duck = "cute";
@@ -148,16 +163,16 @@ function pond() {
 //as strings.
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let globalScope = ["duck"];
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
-let bathroomScope = ["rubberDuck"];
+let bathroomScope = ["rubberDuck", 'duck'];
 
 //This array should contain the variable names (as strings) accessible in the bathtub function.
-let bathtubScope = ["sailorDuck"];
+let bathtubScope = ["sailorDuck", "rubberDuck", "duck"];
 
 //This array should contain the variable names (as strings) accessible in the pond function.
-let pondScope = ["realDuck"];
+let pondScope = ["realDuck", "duck"];
 
 //////////////////PROBLEM 10////////////////////
 
@@ -165,13 +180,17 @@ let pondScope = ["realDuck"];
 //function which returns your name.
 
 //Code Here
-// function outerFn(){
+function outerFn(){
+  return function(){
+    return 'Benjamin'
+  }
+}
 
 // }
 //Now save the result of invoking outerFn into a variable called innerFn.
 
 //Code Here
-
+let innerFn = outerFn()
 //Now invoke innerFn and save the result to a variable called finalResult.
-
+let finalResult = innerFn()
 //Code Here
